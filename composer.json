@@ -1,0 +1,6 @@
+{
+    "require": {
+        "funct/funct": "^1.5",
+      "ext-mbstring": "*"
+    }
+}
