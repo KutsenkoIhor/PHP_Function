@@ -195,5 +195,49 @@
 
 //    $t = '2012-11-03';
 //    $d = strtotime($t);
-    $dd = date('Y', strtotime('2012-11-03'));
-    echo $dd;
+//    $dd = date('Y', strtotime('2012-11-03'));
+//    echo $dd;
+
+
+require_once 'vendor/autoload.php';
+
+[$first, $second] = Funct\Collection\partition([1, 2, 3, 4, 5, 6, 7, 8, 9], function ($num) {
+    return $num % 2 === 0;
+});
+
+//print_r($first);
+//print_r($second);
+
+var_dump(Funct\Collection\every([true, 1, null, 'yes']));
+var_dump(Funct\Collection\every([true, 1, 'yes']));
+var_dump(Funct\Collection\every([2, 6, 4], function ($value) {
+    return ($value % 2) === 0;
+}));
+
+print_r(Funct\Collection\groupBy([1.3, 2.1, 5.8], function ($num) {
+    return floor($num);
+}));
+
+print_r(Funct\Collection\minValue(
+    [
+        10 => [
+            'title' => 'a',
+            'size' => 6
+        ],
+        20 => [
+            'title' => 'b',
+            'size' => 2
+        ],
+        30 => [
+            'title' => 'c',
+            'size' => 3
+        ],
+        40 => [
+            'title' => 'd',
+            'size' => 1
+        ],
+    ],
+    function ($item) {
+        return $item['title'];
+    }
+));
