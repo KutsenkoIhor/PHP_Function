@@ -241,3 +241,35 @@ print_r(Funct\Collection\minValue(
         return $item['title'];
     }
 ));
+
+
+function without(array $items, $value)
+{
+    $filtered = array_filter($items, function ($item) use ($value) {
+        return $item !== $value;
+    });
+    return array_values($filtered);
+}
+
+without([3, 4, 10, 4, 'true'], 4); // [3, 10, 'true']
+
+
+$numbers = [10, 20, 52, 105, 56, 89, 96];
+$max = $numbers[0];
+foreach ($numbers as $value) {
+    if ($max < $value) {
+        $max = $value;
+    }
+}
+print_r($max);
+print_r("\n");
+
+function factorial($number)
+{
+    if ($number <= 1) {
+        return 1;
+    } else {
+        return $number * factorial($number - 1);
+    }
+}
+print_r(factorial(4));
